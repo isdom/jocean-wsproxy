@@ -1,0 +1,44 @@
+apply from: 'http://git.jocean.org/jocean/devconf/raw/master/devconf/build-lib.gradle'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    options.debug = "on"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+configurations {
+    all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    all*.exclude group: 'log4j', module: 'log4j'
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+    all { resolutionStrategy.cacheChangingModulesFor 1, 'minutes' }
+    
+    // all*.exclude group: 'com.netflix.hystrix', module: 'hystrix-core'
+}
+
+dependencies {
+    /* jocean */
+    compile 'org.jocean:jocean-idiom:0.1.4-SNAPSHOT'
+    compile 'org.jocean:jocean-j2se:0.0.4-SNAPSHOT'
+    compile 'org.jocean:jocean-http:0.0.2-SNAPSHOT'
+    compile 'org.jocean:jocean-svr:0.0.1-SNAPSHOT'
+    compile 'org.jocean:jocean-jdmk:0.0.2'
+
+    compile 'io.jaegertracing:jaeger-client:0.32.0'
+    
+    compile "com.google.guava:guava:${guavaVersion}"
+    
+    /* Log */
+    runtime 'org.slf4j:jcl-over-slf4j:1.7.26'
+    runtime 'org.slf4j:log4j-over-slf4j:1.7.26'
+    runtime 'ch.qos.logback:logback-classic:1.2.3'
+    /* compile('org.logback-extensions:logback-ext-spring:0.1.2') { transitive = false } */
+
+    // Declare the dependency for your favourite test framework you want to use in your tests.
+    // TestNG is also supported by the Gradle Test task. Just change the
+    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
+    // 'test.useTestNG()' to your build script.
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.jmockit:jmockit:1.43'
+    testCompile 'org.jmock:jmock:2.10.0-RC3'
+}
