@@ -40,7 +40,10 @@ public final class WebSocketProxyIndexPage {
                 "    socket = new WebSocket(\"" + webSocketLocationBase + "\" + wspath);" + NEWLINE +
                 "    socket.onmessage = function(event) {" + NEWLINE +
                 "      var ta = document.getElementById('responseText');" + NEWLINE +
-                "      ta.value = ta.value + event.data" + NEWLINE +
+
+
+                "      ta.value =  ta.value.substring(ta.value.length-10000, ta.value.length) + event.data" + NEWLINE +
+                "      ta.scrollTop = ta.scrollHeight;" + NEWLINE +
                 "    };" + NEWLINE +
                 "    socket.onopen = function(event) {" + NEWLINE +
                 "      var ta = document.getElementById('responseText');" + NEWLINE +
@@ -72,7 +75,7 @@ public final class WebSocketProxyIndexPage {
                 "<input type=\"button\" value=\"Send Web Socket Data\"" + NEWLINE +
                 "       onclick=\"send(this.form.message.value)\" />" + NEWLINE +
                 "<h3>Output</h3>" + NEWLINE +
-                "<textarea id=\"responseText\" style=\"width:500px;height:300px;\"></textarea>" + NEWLINE +
+                "<textarea id=\"responseText\" style=\"width:95%;height:90%;background:#000;color:green;\"></textarea>" + NEWLINE +
                 "</form>" + NEWLINE +
                 "</body>" + NEWLINE +
                 "</html>" + NEWLINE, CharsetUtil.US_ASCII);
