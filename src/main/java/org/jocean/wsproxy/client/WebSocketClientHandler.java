@@ -110,7 +110,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
         final WebSocketFrame frame = (WebSocketFrame) msg;
         if (frame instanceof TextWebSocketFrame) {
             final TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
-            LOG.info("WebSocket Client received message: {}", textFrame.text());
+            LOG.debug("WebSocket Client received message: {}", textFrame.text());
             if (null != frame) {
                 peerctx.writeAndFlush(frame.retain());
             }
