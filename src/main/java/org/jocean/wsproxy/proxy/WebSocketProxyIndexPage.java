@@ -32,7 +32,7 @@ public final class WebSocketProxyIndexPage {
                 "<body>" + NEWLINE +
                 "<script type=\"text/javascript\">" + NEWLINE +
                 "var socket;" + NEWLINE +
-                "function open(wspath) {" + NEWLINE +
+                "function openws(wspath) {" + NEWLINE +
                 "  if (!window.WebSocket) {" + NEWLINE +
                 "    window.WebSocket = window.MozWebSocket;" + NEWLINE +
                 "  }" + NEWLINE +
@@ -67,7 +67,7 @@ public final class WebSocketProxyIndexPage {
                 "<form onsubmit=\"return false;\">" + NEWLINE +
                 "<input type=\"text\" name=\"wspath\" value=\"\"/>" +
                 "<input type=\"button\" value=\"Connect Web Socket...\"" + NEWLINE +
-                "       onclick=\"open(this.form.wspath.value)\" />" + NEWLINE +
+                "       onclick=\"openws(this.form.wspath.value)\" />" + NEWLINE +
                 "<input type=\"text\" name=\"message\" value=\"Hello, World!\"/>" +
                 "<input type=\"button\" value=\"Send Web Socket Data\"" + NEWLINE +
                 "       onclick=\"send(this.form.message.value)\" />" + NEWLINE +
