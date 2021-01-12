@@ -178,6 +178,8 @@ public class WebSocketProxyHandler extends SimpleChannelInboundHandler<Object> {
             final WebSocketClient client = ctx.channel().attr(UPSTREAM).get();
             if (null != client) {
                 client.send(frame);
+            } else {
+                LOG.warn("without upstream, ignore frame: {}", frame);
             }
             return;
         }
@@ -187,6 +189,8 @@ public class WebSocketProxyHandler extends SimpleChannelInboundHandler<Object> {
             final WebSocketClient client = ctx.channel().attr(UPSTREAM).get();
             if (null != client) {
                 client.send(frame);
+            } else {
+                LOG.warn("without upstream, ignore frame: {}", frame);
             }
             return;
         }
@@ -196,6 +200,8 @@ public class WebSocketProxyHandler extends SimpleChannelInboundHandler<Object> {
             final WebSocketClient client = ctx.channel().attr(UPSTREAM).get();
             if (null != client) {
                 client.send(frame);
+            } else {
+                LOG.warn("without upstream, ignore frame: {}", frame);
             }
         }
     }
